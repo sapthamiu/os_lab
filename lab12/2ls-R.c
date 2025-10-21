@@ -15,7 +15,7 @@ void list_files(char* dir, int depth){
 		perror("opendir()");
 		return;
 	}
-	while(entry = readdir(dp)){
+	while((entry = readdir(dp))){
 		if(strcmp(".", entry->d_name) == 0 || strcmp("..", entry->d_name) == 0) continue;
 		snprintf(path, sizeof(path), "%s/%s", dir, entry->d_name); //full path
 		//get file info
@@ -45,3 +45,15 @@ int main(){
 	list_files(cwd, 0);
 	return 0;
 }
+
+//Output:
+/*
+V_CSE_A1@debianpc-02:~/Desktop/230905090/OS/Lab12$ ./ls_R
+Listing files in directory: /home/V_CSE_A1/Desktop/230905090/OS/Lab12
+a.out
+1ls-l.c
+egscan.c
+2ls-R.c
+ls_l
+ls_R
+*/
