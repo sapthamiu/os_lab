@@ -1,0 +1,117 @@
+1. Try the following shell commands
+$ echo $HOME
+/home/V_CSE_A1
+
+$ echo $PATH
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin
+
+$ echo $MAIL
+
+
+$ echo $USER
+V_CSE_A1
+
+$ echo $SHELL
+/bin/bash
+
+$ echo $TERM
+xterm-256color
+
+
+2. Try the following snippet
+$ firstname=Rakesh 
+
+$ lastname=Sharma
+
+$ echo $firstname $lastname
+Rakesh Sharma
+
+$ export lastname 
+
+$ sh
+	$ echo $firstname $lastname
+	Sharma
+^D
+
+$ echo $firstname $lastname
+Rakesh Sharma
+
+
+3. Try the following snippet
+$ gedit script.sh
+	echo the name of this script is $0
+	echo the first argument is $1
+	echo a list of all the arguments is $*
+	echo this script places the date into a temporary file called $1.$$
+	date > $1.$$
+	ls $1.$$
+	echo contents of this file: 
+	cat $1.$$
+	rm $1.$$
+^D
+
+$ chmod 777 script.sh
+
+$ ./script.sh Rahul Sachin Kumble
+
+the name of this script is ./script.sh
+the first argument is Rahul
+a list of all the arguments is Rahul Sachin Kumble
+this script places the date into a temporary file called Rahul.152401
+Rahul.152401
+contents of this file:
+Tuesday 29 July 2025 08:38:39 AM IST
+-----------------------------------------------------------------------------
+1. Try the following, which illustrates the usage of ps:
+$ (sleep 10; echo done) &
+[1] 264496
+$ ps
+ PID TTY          TIME CMD
+  67282 pts/1    00:00:00 bash
+ 264496 pts/1    00:00:00 bash
+ 264497 pts/1    00:00:00 sleep
+ 264498 pts/1    00:00:00 ps
+$ done
+
+2. Try the following:
+$ (sleep 10; echo done) &
+[1] 289054
+$ ps
+    PID TTY          TIME CMD
+  67282 pts/1    00:00:00 bash
+ 297387 pts/1    00:00:00 bash
+ 297388 pts/1    00:00:00 sleep
+ 298142 pts/1    00:00:00 ps
+
+$ kill 297387
+
+$ ps
+    PID TTY          TIME CMD
+  67282 pts/1    00:00:00 bash
+ 297388 pts/1    00:00:00 sleep
+ 298143 pts/1    00:00:00 ps
+[1]+  Terminated              ( sleep 10; echo done )
+
+3. Try the following:
+$ nano bgprocess.sh 
+	(sleep 10; echo done 1)&
+	(sleep 5; echo done 2)&
+	echo done 3; wait; echo done 4
+^s ^w
+
+$ chmod 777 bgprocess.sh
+
+$ ./bgprocess.sh
+done 3 
+done 2
+done 1
+done 4
+-------------------------------------------------------------------
+1. List all the files under the given input directory, whose extension has only one character
+$ nano script1.sh
+	path=$1
+	ls $path/*.?
+$ chmod 777 script1.sh
+$ ./script1.sh test
+test/file1.t test/file2.r
+
