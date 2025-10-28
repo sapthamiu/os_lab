@@ -1,0 +1,19 @@
+1. 
+i) To create a directory in your home directory having 2 subdirectories.
+$ mkdir dir1 dir1/subdir1 dir1/subdir2
+
+ii) In the first subdirectory, create 3 different files with different
+content in each of them.
+$ cat > file1.txt
+hello for the first time!
+$ cat > file2.txt
+hello for the second time!
+$ cat > file3.txt
+hello for the third time!
+
+iii) Copy the first file from the first subdirectory to the second subdirectory.
+$ cp file1.txt ../subdir2
+
+iv) Create one more file in the second subdirectory, which has the output of the number of users and number of files.
+$ find -type f | wc -l
+
