@@ -1,0 +1,2 @@
+alias dir="ls -l"
+
